@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class=" justify-content-center container pt-5">
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">username</label>
+                <div class="col-sm-10">
+                    <input type="text" name="username" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+            <h5>If you are not registered user. Please signup from here <a href="{% url 'user_app:signup' %}">Signup</a></h5>
+        </form>
+
+    </div>
+
+{% endblock %}
