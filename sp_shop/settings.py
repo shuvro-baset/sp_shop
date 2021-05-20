@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'user_app',
+    'social_django',
+
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -66,17 +68,26 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_FACEBOOK_KEY = '132952028801115'
+SOCIAL_AUTH_FACEBOOK_SECRET = '9741406a50599230d3cf1d89eb2a6d3f'
+SOCIAL_AUTH_GITHUB_KEY = '8363325b27e57f3dcd5d'
+SOCIAL_AUTH_GITHUB_SECRET = '8dec0a7983895adeda6060b10e044c03fc825409'
 WSGI_APPLICATION = 'sp_shop.wsgi.application'
 
 # Database
@@ -107,6 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 

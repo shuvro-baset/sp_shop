@@ -13,6 +13,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'user_app:login' %}">login/signup</a>
       </li>
+{#     social login url #}
+
         {% if request.user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'user_app:logout' %}">logout</a>
